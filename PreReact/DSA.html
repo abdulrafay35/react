@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript DSA's</title>
+</head>
+
+<body style="background-color: black; color: aliceblue;">
+    <script>
+        // DataStructures and algorithems in Javascript 
+        // 1. Reverse an array without using the built in method 
+        const numbers = [1, 2, 3, 4, 5, 6];
+        // reverseArray(numbers);
+
+        // function reverseArray(arr) {
+        //     const a = arr.slice();
+        //     let left = 0;
+        //     let right = arr.length-1;
+
+        //     while (left < right) {
+        //         const temp = a[left];
+        //         a[left] = a[right];
+        //         a[right] = temp;
+
+        //         left++;
+        //         right--;
+        //     }
+
+        //     console.log(a)
+        // }
+
+        // 2. Swap only first and last elemnts of array
+
+        // firstLastSwap(numbers);
+
+        // function firstLastSwap(arr) {
+        //     let left = 0;
+        //     let right = arr.length-1;
+
+        //     let temp = arr[left];
+        //     arr[left] = arr[right];
+        //     arr[right] = temp;
+
+        //     console.log(arr);
+        // }
+
+
+        // 3. Reverse just the first half of the array 
+
+        reverseFirstHalf(numbers);
+
+
+        function reverseFirstHalf(arr) {
+            let half = Math.round(arr.length / 2);
+            // 1. Separate first half of the array
+            let firstHalf = new Array();
+            while (firstHalf.length < half) {
+                firstHalf.push(arr[firstHalf.length]);
+            }
+
+            // 2. reverse the halfed array 
+            let left = 0;
+            let right = firstHalf.length - 1;
+            while (left < right) {
+                const temp = firstHalf[left];
+                firstHalf[left] = firstHalf[right];
+                firstHalf[right] = temp;
+
+                left++; right--;
+            }
+
+            // 3. change the first half value of the array
+            for (let i =0; i<half ; i++) {
+                arr[i] = firstHalf[i];
+            }
+
+            console.log(arr)
+
+
+        }
+
+    </script>
+</body>
+
+</html>

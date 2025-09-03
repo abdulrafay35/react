@@ -67,6 +67,42 @@ Even Shorter Destructuing : "function ChatMessage({message, sender}) {
     console.log(message);
 }"
 
--- Inside jsx we can use the guard operator "&&" that works as if statement
+-- Inside jsx we can use the guard operator "&&" that works as if 
 
+-- ".map" is an array method that lets us go through each value of the array, run the function and returns a new value. It takes function as it's parameter, and this function itself takes a parameter that stores the value for the array items for each itteration to let us do what we want to do on any individual element of the array.
 
+-- In react if we add an array of components, then we must give each component a unique "key", which helps react track changes in the array. 
+
+-- React has special props for components called "event", which let us do something when something happens. The "event" prop always starts with "on" followed by the "name" of the event. For example onClick . It uses camelCase. "event" takes a function which is called "event handler" . "Event handler" is the function that runs when the event happens. For Example: 
+<button onClick={sendMessage}>Send Message</button> . The event handler function goes in without the parentheses "()".
+
+-- "State" is the data that is connected to the HTML, When we update this data, it will update the HTML.
+
+-- To convert some data into State, We use "useState" which helps us track our data for changes. When we pass the data the the useState function then it "returns an array with two values" . First Value is the "current data", and second value is the "Updateer Function", which is a function that we can use to update this Data. 
+If we update the data directly, react will not update the HTML, but if we use that function to update the data, react will update the HTML.
+
+-- In React we should not modify the data directly. We should always create a copy, and then modify the copy. This helps react be more efficient.
+
+-- Spread operator "..." helps us make a copy of an array and we use it a lot in react alongside useState's updater function to update the data. One practical usecase is as follow : 
+"
+const numbers = [1,2,3];
+const newArray = [...numbers, 4 ] 
+This will return newArray witht the value "[1,2,3,4]". So we take the current array and made a copy of it , then added a new element at the end. "
+
+-- "Array Destructuring" is a technique to get arrays values using shortend. For example :
+"const numbers = [1,2,3]; 
+const [num1, num2, num3] = numbers
+"
+In array destructuring the order matters.
+
+-- "React Best Practices" : We should not use the DOM manually. Cuz react is managing the website, and if we use the dom manually it might interfere with react. 
+For example:
+To get the value from the input field, we shouldn't use direct dom methods like "input.value", instead we should use react features to get value from the input.
+
+-- Hooks can only be called (declared) inside of the body of a function component.
+
+-- The state's data can only be used inside the component where the state is defined. If we wanna use a state data from one component to another then we have to move the state code to a "parent component" that has both components as child. And then childeren can share the same state from the parent component. This is called "lifting state up" . To let the childeren components share/use the state of parent , we do this: 
+First we pass the state's values as props inside the component call.
+Then in component definition (function's parameter) we can accept those props just as we do for normal props, and now child components can have the state from the parent.
+
+-- State does not update immediately. State is updated after all the code is finished.
