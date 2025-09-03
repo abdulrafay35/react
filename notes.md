@@ -101,8 +101,17 @@ To get the value from the input field, we shouldn't use direct dom methods like 
 
 -- Hooks can only be called (declared) inside of the body of a function component.
 
+-- Put hooks at the top of the component, Hooks should not be inside anything, i-e : inside an if statement or inside a simple function.
+
 -- The state's data can only be used inside the component where the state is defined. If we wanna use a state data from one component to another then we have to move the state code to a "parent component" that has both components as child. And then childeren can share the same state from the parent component. This is called "lifting state up" . To let the childeren components share/use the state of parent , we do this: 
 First we pass the state's values as props inside the component call.
 Then in component definition (function's parameter) we can accept those props just as we do for normal props, and now child components can have the state from the parent.
 
 -- State does not update immediately. State is updated after all the code is finished.
+
+-- You can add css to the react by different ways. One way is adding it to the head of the page in style tag.
+
+-- "useEffect" hook runs some code after the component is created or updated. It takes "two arguments". First is "the function" which will run each time the component is created or updated. So we can put our code inside that function and that function will update our component , each time the component is created or updated. Second parameter of use effect is "dependency array" which controls when useEffect runs. If we give it empty array "[]", useEffect will "only run once" after the component is created. We can also put any kind of data inside the array and now the useEffect will also run when that data is updated. 
+Best practice is to give useEffect a dependency array, to avoid it running too often.
+
+-- "useRef" hooks let us automatically save an HTML element from the component. it creates a "ref", which has some special features. We have to give useRef initial value as a parameter. Usually it is set to "null" , which means ref will start out empty. We can use "ref" prop on the element we wanna save.
