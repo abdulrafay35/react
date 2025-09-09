@@ -1,0 +1,277 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>React + Git Cheat Sheet (Dark)</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#0f172a;
+      --muted:#94a3b8;
+      --text:#e2e8f0;
+      --heading:#60a5fa;
+      --accent:#22d3ee;
+      --code-bg:#0a0f1a;
+      --code-border:#1e293b;
+      --chip:#1f2937;
+      --success:#34d399;
+      --warn:#f59e0b;
+      --danger:#f87171;
+      --link:#38bdf8;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
+    .wrap{max-width:960px;margin:40px auto;padding:0 20px}
+    header{margin-bottom:24px}
+    h1{font-size:28px;margin:0 0 8px 0;color:var(--heading);letter-spacing:.2px}
+    .subtitle{color:var(--muted);margin:0 0 24px 0}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:880px){.grid{grid-template-columns: 280px 1fr}}
+    nav{position:sticky;top:20px;background:var(--panel);border:1px solid #1f2a44;padding:14px 14px;border-radius:12px;height:fit-content}
+    nav h3{margin:0 0 8px 0;font-size:14px;color:var(--accent);text-transform:uppercase;letter-spacing:.12em}
+    nav a{display:block;padding:6px 8px;border-radius:8px;color:var(--text);text-decoration:none;font-size:14px;border:1px solid transparent}
+    nav a:hover{background:#0b1326;border-color:#1f2a44;color:var(--link)}
+    section{background:var(--panel);border:1px solid #1f2a44;border-radius:14px;padding:18px}
+    section h2{margin:0 0 12px 0;color:var(--heading);font-size:22px}
+    section h3{margin:18px 0 8px 0;font-size:16px;color:var(--accent)}
+    p,li{color:var(--text)}
+    ul{margin:0 0 0 18px;padding:0}
+    .callout{background:#0b1326;border:1px dashed #1f2a44;padding:12px;border-radius:12px;color:var(--muted);font-size:14px}
+    code,kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:13px}
+    pre{background:var(--code-bg);border:1px solid var(--code-border);border-radius:12px;padding:14px;overflow:auto;margin:10px 0}
+    .chip{display:inline-block;background:var(--chip);padding:4px 10px;border-radius:999px;font-size:12px;color:var(--muted);margin-right:6px;border:1px solid #2b3a55}
+    .k{color:#93c5fd} .s{color:#fca5a5} .n{color:#fde68a} .c{color:#94a3b8}
+    .list-kbd kbd{border:1px solid #2b3a55;padding:2px 6px;border-radius:6px;background:#0b1326}
+    a{color:var(--link)}
+    .hr{height:1px;background:#1f2a44;margin:16px 0}
+    .copy-btn{float:right;font-size:12px;background:#0b1326;color:var(--text);border:1px solid #1f2a44;border-radius:8px;padding:6px 8px;cursor:pointer}
+    .copy-btn:hover{border-color:#2b3a55}
+    footer{color:var(--muted);font-size:13px;margin:20px 0 40px 0;text-align:center}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>React + Git Quick Notes</h1>
+      <p class="subtitle">Memory-proof cheat sheet. Read it cold and get back in flow fast.</p>
+      <div class="list-kbd">
+        <span class="chip">React</span>
+        <span class="chip">JSX</span>
+        <span class="chip">Hooks</span>
+        <span class="chip">Git</span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <nav>
+        <h3>Contents</h3>
+        <a href="#git">Git + GitHub Basics</a>
+        <a href="#js">JS Essentials</a>
+        <a href="#react-basics">React Basics</a>
+        <a href="#components">Components</a>
+        <a href="#props">Props</a>
+        <a href="#events">Events</a>
+        <a href="#state">State</a>
+        <a href="#lifting">Lifting State Up</a>
+        <a href="#hooks">Hooks</a>
+        <a href="#best">Best Practices</a>
+        <a href="#styling">Styling</a>
+        <a href="#tldr">TL;DR</a>
+      </nav>
+
+      <main>
+        <section id="git">
+          <h2>Git + GitHub Basics</h2>
+          <p>Git = your project’s <strong>time machine</strong>. GitHub = the <strong>cloud for that time machine</strong>.</p>
+          <div class="callout">First time only: initialize, commit, connect, push.</div>
+          <pre><button class="copy-btn" data-target="code1">Copy</button><code id="code1">git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin &lt;repo-url&gt;
+git push -u origin main</code></pre>
+          <p>After that, your regular loop is just:</p>
+          <pre><button class="copy-btn" data-target="code2">Copy</button><code id="code2">git add .
+git commit -m "message"
+git push</code></pre>
+        </section>
+
+        <section id="js">
+          <h2>JavaScript Essentials (for React)</h2>
+          <h3><code>this</code> keyword</h3>
+          <p>Inside an object method, <code>this</code> refers to the current object.</p>
+          <pre><button class="copy-btn" data-target="code3">Copy</button><code id="code3">const cart = {
+  id: 1,
+  showId() { console.log(this.id); }
+}
+cart.showId(); // 1</code></pre>
+
+          <h3>Spread operator <code>...</code></h3>
+          <pre><button class="copy-btn" data-target="code4">Copy</button><code id="code4">const numbers = [1,2,3];
+const newNumbers = [...numbers, 4]; // [1,2,3,4]</code></pre>
+
+          <h3>Array destructuring</h3>
+          <pre><button class="copy-btn" data-target="code5">Copy</button><code id="code5">const [a, b] = [10, 20];
+console.log(a); // 10</code></pre>
+
+          <h3><code>.map()</code> transforms arrays</h3>
+          <pre><button class="copy-btn" data-target="code6">Copy</button><code id="code6">[1,2,3].map(n =&gt; n * 2); // [2,4,6]</code></pre>
+        </section>
+
+        <section id="react-basics">
+          <h2>React Basics</h2>
+          <ul>
+            <li><strong>JSX</strong> = HTML + JS. React uses Babel to compile it for the browser.</li>
+            <li>Insert JS with braces: <code>&lt;p&gt;2+2 = {2+2}&lt;/p&gt;</code></li>
+            <li>All tags must close: <code>&lt;img /&gt;</code>, <code>&lt;input /&gt;</code></li>
+            <li>Conditional render with <code>&amp;&amp;</code>:
+              <pre><button class="copy-btn" data-target="code7">Copy</button><code id="code7">{isLoggedIn &amp;&amp; &lt;Dashboard /&gt;}</code></pre>
+            </li>
+          </ul>
+        </section>
+
+        <section id="components">
+          <h2>Components</h2>
+          <p>Components are <strong>functions that return JSX</strong>. Start names with a Capital letter.</p>
+          <pre><button class="copy-btn" data-target="code8">Copy</button><code id="code8">function ChatInput() {
+  return (
+    &lt;&gt;
+      &lt;input placeholder="Type..." /&gt;
+      &lt;button&gt;Send&lt;/button&gt;
+    &lt;/&gt;
+  );
+}
+/* Use like HTML: */
+&lt;ChatInput /&gt;</code></pre>
+        </section>
+
+        <section id="props">
+          <h2>Props (Component Inputs)</h2>
+          <pre><button class="copy-btn" data-target="code9">Copy</button><code id="code9">&lt;ChatMessage message="Hello" sender="User" /&gt;
+
+function ChatMessage({ message, sender }) {
+  return &lt;p&gt;{sender}: {message}&lt;/p&gt;
+}</code></pre>
+        </section>
+
+        <section id="events">
+          <h2>Events</h2>
+          <p>Use camelCase like <code>onClick</code>, <code>onChange</code>. Pass a function, not a function call.</p>
+          <pre><button class="copy-btn" data-target="code10">Copy</button><code id="code10">&lt;button onClick={sendMessage}&gt;Send&lt;/button&gt;  // ✅
+&lt;button onClick={sendMessage()}&gt;Send&lt;/button&gt; // ❌ runs immediately</code></pre>
+        </section>
+
+        <section id="state">
+          <h2>State (Dynamic UI Data)</h2>
+          <p>When state changes, React re-renders the UI. Don’t mutate directly; use the setter.</p>
+          <pre><button class="copy-btn" data-target="code11">Copy</button><code id="code11">import { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  return (
+    &lt;&gt;
+      &lt;p&gt;{count}&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;+1&lt;/button&gt;
+    &lt;/&gt;
+  );
+}</code></pre>
+          <div class="callout">
+            <strong>Notes:</strong> State updates are batched and not immediate. For list updates, make copies:
+          </div>
+          <pre><button class="copy-btn" data-target="code12">Copy</button><code id="code12">setItems(prev =&gt; [...prev, newItem])</code></pre>
+          <h3>Lists need keys</h3>
+          <pre><button class="copy-btn" data-target="code13">Copy</button><code id="code13">{items.map(item =&gt; (
+  &lt;li key={item.id}&gt;{item.text}&lt;/li&gt;
+))}</code></pre>
+        </section>
+
+        <section id="lifting">
+          <h2>Lifting State Up (Sharing Between Siblings)</h2>
+          <pre><button class="copy-btn" data-target="code14">Copy</button><code id="code14">function Parent() {
+  const [message, setMessage] = useState("");
+  return (
+    &lt;&gt;
+      &lt;Input setMessage={setMessage} /&gt;
+      &lt;Display message={message} /&gt;
+    &lt;/&gt;
+  );
+}</code></pre>
+        </section>
+
+        <section id="hooks">
+          <h2>Hooks</h2>
+          <div class="callout">
+            Rules: Call hooks at the <strong>top level</strong> of a component. Never inside loops, conditions, or nested functions.
+          </div>
+
+          <h3><code>useState</code></h3>
+          <p>Explained above.</p>
+
+          <h3><code>useEffect</code></h3>
+          <pre><button class="copy-btn" data-target="code15">Copy</button><code id="code15">import { useEffect } from "react";
+
+useEffect(() =&gt; {
+  console.log("runs on mount + when dependency changes");
+}, [dependency]); // [] runs once on mount</code></pre>
+
+          <h3><code>useRef</code></h3>
+          <pre><button class="copy-btn" data-target="code16">Copy</button><code id="code16">import { useRef } from "react";
+
+const inputRef = useRef(null);
+&lt;input ref={inputRef} /&gt;
+&lt;button onClick={() =&gt; inputRef.current.focus()}&gt;Focus&lt;/button&gt;</code></pre>
+        </section>
+
+        <section id="best">
+          <h2>Best Practices</h2>
+          <ul>
+            <li>Let React manage the DOM. Prefer state, props, and refs over <code>document.querySelector</code>.</li>
+            <li>Keep components small & reusable.</li>
+            <li>Provide stable <code>key</code> props for list items.</li>
+            <li>Place all hooks at the top of your component.</li>
+          </ul>
+        </section>
+
+        <section id="styling">
+          <h2>Styling</h2>
+          <ul>
+            <li>Inline: <code>&lt;div style={{ color: "red" }} /&gt;</code></li>
+            <li>CSS files: <code>import "./App.css"</code></li>
+            <li>CSS-in-JS: styled-components, emotion, etc.</li>
+          </ul>
+        </section>
+
+        <section id="tldr">
+          <h2>⚡ TL;DR</h2>
+          <ul>
+            <li>React = functions returning JSX.</li>
+            <li>Data flows via <strong>props</strong>; dynamic state via <strong>useState</strong>.</li>
+            <li>Events: <code>onClick</code> etc. pass a function.</li>
+            <li>Lists: <code>.map()</code> + unique <code>key</code>.</li>
+            <li>Effects with <code>useEffect</code>; refs with <code>useRef</code>.</li>
+            <li>Share data by lifting state to the parent.</li>
+          </ul>
+        </section>
+
+        <div class="hr"></div>
+        <footer>Made for future-you. Breathe, skim, build. 🚀</footer>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Copy buttons
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-target');
+        const code = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(code).then(() => {
+          const old = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(() => btn.textContent = 'Copy', 1200);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
