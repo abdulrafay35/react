@@ -41,4 +41,6 @@ We now have multiple pages in the website as shown in example above. And importa
 
 -- fetch() returns a promise.
 
--- Second way of getting data from backend/api is using npm package 'axious' which is cleaner
+-- Second way of sending requests to backend/api is using npm package 'axios' which is cleaner.
+
+-- 'useEffect' hooks runs the code inside it , everytime the component is created or updated. But we can control this by adding an empty array "[]" at the end. It is called dependency array.
