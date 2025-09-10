@@ -34,3 +34,11 @@ We now have multiple pages in the website as shown in example above. And importa
 -- If you want a different title for each page (ideally) then it is simple in react. Just paste the title tag in the component of that page (in the beginnning of return statement)
 
 -- Link component let's us go to another page without page reload . To use it just import it where needed. And then instead of using a tags. Use Link components. And instead of "href" attribute it has the prop called "to" . So you should use Link component when using react router.
+
+-- One way to get data from the backend/api is using fetch() .
+
+-- Asyncronous code means the code that isn't finished/executed right away. For example when we call an API using fetch() .
+
+-- fetch() returns a promise.
+
+-- Second way of getting data from backend/api is using npm package 'axious' which is cleaner
