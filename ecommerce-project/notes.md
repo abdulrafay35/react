@@ -44,3 +44,5 @@ We now have multiple pages in the website as shown in example above. And importa
 -- Second way of sending requests to backend/api is using npm package 'axios' which is cleaner.
 
 -- 'useEffect' hooks runs the code inside it , everytime the component is created or updated. But we can control this by adding an empty array "[]" at the end. It is called dependency array.
+
+-- We can't add props to the fragments "<></>" in react. To add props inside fragments, we have to use built in react component called "<Fragment></Fragment>". and we can pass any props inside it.
