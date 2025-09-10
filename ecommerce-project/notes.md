@@ -47,4 +47,4 @@ We now have multiple pages in the website as shown in example above. And importa
 
 -- We can't add props to the fragments "<></>" in react. To add props inside fragments, we have to use built in react component called "<Fragment></Fragment>". and we can pass any props inside it.
 
-
+-- A cleaner way of accessing backend / api is to use async await. When using async await inside the useEffect we cannot write the async directly beside the callback function of the useEffect, instead we have to create another function inside the useEffect hook and set that to async and then use await before the code that sends the requests.
