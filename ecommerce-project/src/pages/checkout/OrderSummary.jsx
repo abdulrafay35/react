@@ -37,9 +37,9 @@ export function OrderSummary({ deliveryOptions, cart, loadCart }) {
                                     <span>
                                         Quantity: <span className="quantity-label">{cartItem.quantity}</span>
                                     </span>
-                                    <span className="update-quantity-link link-primary">
+                                    {/* <span className="update-quantity-link link-primary">
                                         Update
-                                    </span>
+                                    </span> */}
                                     <span
                                         className="delete-quantity-link link-primary"
                                         onClick={deleteCartItem}
