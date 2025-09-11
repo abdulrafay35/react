@@ -155,3 +155,14 @@
   height: 34px;
   margin-top: 1px;
 }
+
+.added-message {
+  opacity: 0;
+  transition: opacity 0.5s ease; /* smooth fade */
+  margin-bottom: 10px;
+  color: green;
+}
+
+.added-message.visible {
+  opacity: 1;
+}

@@ -4,6 +4,8 @@ import { formatMoney } from "../../lib/money";
 
 export function Product({ product, loadCart }) {
     const [quantity, setQuantity] = useState(1);
+    const [showAdded, setShowAdded] = useState(false);
+
 
     const selectQuantity = (e) => {
         setQuantity(Number(e.target.value));
@@ -11,11 +13,21 @@ export function Product({ product, loadCart }) {
     }
 
     const addToCart = async () => {
-        await axios.post('http://localhost:3000/api/cart-items', {
+        const response = await axios.post('http://localhost:3000/api/cart-items', {
             productId: product.id,
             quantity: quantity
         });
-        await loadCart();
+
+        if (response.status === 201) {
+            await loadCart();
+            setShowAdded(true);
+
+            setTimeout(() => {
+                setShowAdded(false);
+            }, 800);
+
+        }
+
     }
 
     return (
@@ -62,6 +74,11 @@ export function Product({ product, loadCart }) {
                 <img src="images/icons/checkmark.png" />
                 Added
             </div>
+
+            <div className={`added-message ${showAdded ? "visible" : ""}`}>
+                ✔️ Added
+            </div>
+
 
             <button
                 className="add-to-cart-button button-primary"
