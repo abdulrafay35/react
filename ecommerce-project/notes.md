@@ -48,3 +48,7 @@ We now have multiple pages in the website as shown in example above. And importa
 -- We can't add props to the fragments "<></>" in react. To add props inside fragments, we have to use built in react component called "<Fragment></Fragment>". and we can pass any props inside it.
 
 -- A cleaner way of accessing backend / api is to use async await. When using async await inside the useEffect we cannot write the async directly beside the callback function of the useEffect, instead we have to create another function inside the useEffect hook and set that to async and then use await before the code that sends the requests.
+
+-- React has a new feature called "react compiler". It make our fast and helps render only the part of componet that is needed to be updated. Before the compiler, we have to use stuff like, useMemo, useCallback , memo etc . But now we just setup "react compiler" and it automatically handles everything.
+
+-- To setup the "react compiler" follow the instructions that simon (instructor) has put on his github.
